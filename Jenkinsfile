@@ -1,22 +1,33 @@
-// node {
-//     stage('scm'){
-//         git 'https://github.com/DevopsDudes/spring-petclinic.git'
-//     }
-//     stage('build'){
-//         sh 'mvn clean package'
-//     }
-// }
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage('Source'){
-            step{
-                git 'https://github.com/DevopsDudes/spring-petclinic.git'
+
+    stages{
+        stage("scm"){
+            steps{
+                echo "========executing A========"
             }
-        }stage('Package'){
-            step{
-                sh 'mvn package'
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
             }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
