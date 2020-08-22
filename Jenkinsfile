@@ -1,33 +1,15 @@
-pipeline{
+pipeline {
     agent any
-
-    stages{
-        stage("scm"){
-            steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+    stages {
+        stage ('scm') {
+            steps {
+                git 'https://github.com/DevopsDudes/spring-petclinic.git'
             }
         }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
+        stage ('Package') {
+            steps {
+                sh 'mvn package'
+            }
         }
     }
 }
