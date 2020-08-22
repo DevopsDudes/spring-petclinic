@@ -9,7 +9,7 @@
 pipeline {
     agent any
     stages{
-        stage{'scm'}{
+        stage{'Source'}{
             step{
                 git 'https://github.com/DevopsDudes/spring-petclinic.git'
             }
