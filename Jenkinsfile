@@ -8,7 +8,7 @@
 // }
 pipeline {
     agent any
-    stages{
+    stages {
         stage('scm'){
             step{
                 git 'https://github.com/DevopsDudes/spring-petclinic.git'
