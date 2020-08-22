@@ -9,11 +9,11 @@
 pipeline {
     agent any
     stages{
-        stage{'Source'}{
+        stage('scm'){
             step{
                 git 'https://github.com/DevopsDudes/spring-petclinic.git'
             }
-        }stage{'Package'}{
+        }stage('Package'){
             step{
                 sh 'mvn package'
             }
